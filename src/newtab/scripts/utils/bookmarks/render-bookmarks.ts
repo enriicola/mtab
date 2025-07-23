@@ -4,6 +4,12 @@ import { renderDefaultBlockyBookmarks } from "src/newtab/scripts/utils/bookmarks
 import { renderBookmarkNodeBookmarks } from "src/newtab/scripts/utils/bookmarks/render-bookmarks-user-defined";
 
 export const renderBookmarks = (config: Config) => {
+  // Clean up any previous layout modifications
+  const contentEl = document.getElementById("content");
+  if (contentEl) {
+    contentEl.classList.remove("default-blocky-full-width");
+  }
+
   switch (config.bookmarks.type) {
     case "none": {
       return;
